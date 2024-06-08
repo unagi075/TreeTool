@@ -1,1 +1,71 @@
 test
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>木の体積計算</title>
+    <!-- BootstrapのCSSを読み込む -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: #e6ffe6;">
+    <div class="container mt-5">
+        <h1 class="mb-4">木の体積計算</h1>
+        <form id="volumeForm">
+            <div class="form-row">
+                <div class="form-group col-md-1">
+                    <label for="diameter">直径 (cm)</label>
+                    <input type="number" id="diameter" class="form-control" min="14" max="40" step="2" value="14" required>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="quantity">本数</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary" onclick="decrementQuantity()">-</button>
+                        </div>
+                        <input type="number" id="quantity" class="form-control" min="0" value="0" required>
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-secondary" onclick="incrementQuantity()">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-1">
+                    <label for="length">長さ (m)</label>
+                    <input type="number" id="length" class="form-control" min="3" max="4" step="0.5" value="4" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">計算</button>
+        </form>
+        <div class="mt-4">
+            <h3>体積: <span id="result"></span> m³</h3>
+        </div>
+    </div>
+
+    <!-- BootstrapのJavaScriptとjQueryを読み込む -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function incrementQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+
+        function decrementQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            const newValue = parseInt(quantityInput.value) - 1;
+            quantityInput.value = Math.max(newValue, 1);
+        }
+
+        document.getElementById('volumeForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const diameter = parseFloat(document.getElementById('diameter').value);
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const length = parseFloat(document.getElementById('length').value);
+            const volume = (Math.PI * Math.pow(diameter / 2, 2)) * quantity * length;
+            document.getElementById('result').textContent = volume.toFixed(2);
+        });
+    </script>
+</body>
+</html>
+
