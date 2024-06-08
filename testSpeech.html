@@ -108,8 +108,8 @@
             const quantityInput = document.getElementById('quantity'+num);
             quantityInput.value = parseInt(quantityInput.value) + 1;
             document.getElementById('quantity'+num).style.backgroundColor = 'red';
-            document.getElementById('quantity'+beroeNum).style.backgroundColor = '';
-            beroeNum = num;
+            document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
+            beforeNum = num;
         }
 
         function decrementQuantity(num) {
