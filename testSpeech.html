@@ -1,1 +1,34 @@
 test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音声認識サンプル</title>
+</head>
+<body>
+    <h1>音声認識サンプル</h1>
+    <button id="start-recognition">音声認識を開始</button>
+    <p id="recognized-text"></p>
+    <input type="text" id="text-box" placeholder="認識されたテキストを表示">
+
+    <script>
+        const recognition = new webkitSpeechRecognition();
+        const recognizedText = document.getElementById('recognized-text');
+        const textBox = document.getElementById('text-box');
+
+        recognition.lang = 'ja-JP'; // 日本語を指定
+
+        recognition.onresult = (event) => {
+            const result = event.results[0][0].transcript;
+            recognizedText.textContent = `認識結果: ${result}`;
+            textBox.value = result; // テキストボックスに表示
+        };
+
+        document.getElementById('start-recognition').addEventListener('click', () => {
+            recognition.start();
+        });
+    </script>
+</body>
+</html>
+
