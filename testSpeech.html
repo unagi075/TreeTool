@@ -1,52 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>音声認識サンプル</title>
+    <!-- BootstrapのCSSを読み込む -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>音声認識サンプル4</h1>
-    <button id="start-button">音声認識を開始</button>
-    <p id="recognized-text"></p>
+<body style="background-color: #e6ffe6;">
+    <h1>音声認識サンプル5</h1>
     <p id="result"></p>
-
+    <div class="fixed-bottom d-flex justify-content-center">
+        <button id="start-button" class="btn btn-primary">音声認識を開始</button>
+    </div>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         
+        //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-if ('SpeechRecognition' in window) {
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'ja-JP';  // 日本語に設定
-    recognition.interimResults = false;  // 中間結果を表示しない
-    recognition.maxAlternatives = 1;
+        if ('SpeechRecognition' in window) {
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'ja-JP';  // 日本語に設定
+            recognition.interimResults = false;  // 中間結果を表示しない
+            recognition.maxAlternatives = 1;
 
-    const startButton = document.getElementById('start-button');
-    const resultElement = document.getElementById('result');
+            const startButton = document.getElementById('start-button');
+            const resultElement = document.getElementById('result');
 
-    startButton.addEventListener('click', () => {
-        recognition.start();
-    });
+            startButton.addEventListener('click', () => {
+                recognition.start();
+            });
 
-    recognition.addEventListener('result', (event) => {
-        const transcript = event.results[0][0].transcript;
-        resultElement.textContent = `認識結果: ${transcript}`;
-    });
+            recognition.addEventListener('result', (event) => {
+                const transcript = event.results[0][0].transcript;
+		        var tmpStr = transcript.replace(/[^0-9]/g, "");
+		        tmpStr = tmpStr.slice(-2);
+                resultElement.textContent = `認識結果: ${tmpStr}`;
+            });
 
-    recognition.addEventListener('error', (event) => {
-        resultElement.textContent = `エラー: ${event.error}`;
-    });
+            recognition.addEventListener('error', (event) => {
+                resultElement.textContent = `エラー: ${event.error}`;
+            });
 
-    recognition.addEventListener('end', () => {
-        startButton.textContent = '音声入力を開始';
-    });
+            recognition.addEventListener('end', () => {
+                startButton.textContent = '音声入力を開始';
+            });
 
-    recognition.addEventListener('start', () => {
-        startButton.textContent = '認識中...';
-    });
-} else {
-    alert('このブラウザは音声認識をサポートしていません。');
-}
+            recognition.addEventListener('start', () => {
+                startButton.textContent = '認識中...';
+            });
+        } else {
+            alert('このブラウザは音声認識をサポートしていません。');
+        }
     </script>
 </body>
 </html>
