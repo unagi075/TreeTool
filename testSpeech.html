@@ -33,15 +33,12 @@
                     </div>
                 </div>
                 <div class="form-group col-3">
-                    <label for="diameter">直径</label>
                     <input type="number" id="diameter" class="form-control" min="14" max="40" step="2" value="16" required>
                 </div>
                 <div class="form-group col-3">
-                    <label for="length">長さ</label>
                     <input type="number" id="length" class="form-control" min="3" max="4" step="0.5" value="4" required>
                 </div>
                 <div class="form-group col-4">
-                    <label for="quantity">本数</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <button type="button" class="btn btn-outline-secondary" onclick="decrementQuantity(16)">-</button>
@@ -110,6 +107,7 @@
         function incrementQuantity(num) {
             const quantityInput = document.getElementById('quantity'+num);
             quantityInput.value = parseInt(quantityInput.value) + 1;
+            document.getElementById('quantity'+num).style.backgroundColor = 'red';
         }
 
         function decrementQuantity(num) {
