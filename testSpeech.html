@@ -12,21 +12,6 @@
     <input type="text" id="result" placeholder="認識されたテキストを表示">
 
     <script>
-        const recognition = new webkitSpeechRecognition();
-        const recognizedText = document.getElementById('recognized-text');
-        const textBox = document.getElementById('text-box');
-
-        recognition.lang = 'ja-JP'; // 日本語を指定
-
-        recognition.onresult = (event) => {
-            const result = event.results[0][0].transcript;
-            recognizedText.textContent = `認識結果: ${result}`;
-            textBox.value = result; // テキストボックスに表示
-        };
-
-        document.getElementById('start-recognition').addEventListener('click', () => {
-            recognition.start();
-        });
         
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
