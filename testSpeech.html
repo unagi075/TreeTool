@@ -64,10 +64,9 @@
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        
+        var beforeNum=0;
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        var beforeNum = 0
         if ('SpeechRecognition' in window) {
             const recognition = new SpeechRecognition();
             recognition.lang = 'ja-JP';  // 日本語に設定
@@ -108,8 +107,10 @@
             const quantityInput = document.getElementById('quantity'+num);
             quantityInput.value = parseInt(quantityInput.value) + 1;
             document.getElementById('quantity'+num).style.backgroundColor = 'red';
-            document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
-            beforeNum = num;
+            if (beforeNum != 0 && beforeNum != num) {
+ 	        document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
+	    }
+	    beforeNum = num;
         }
 
         function decrementQuantity(num) {
