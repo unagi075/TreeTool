@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音声認識サンプル</title>
+    <title>木の体積計算</title>
     <!-- BootstrapのCSSを読み込む -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body style="background-color: #e6ffe6;">
     <div class="container mt-5">
-        <h1 class="mb-4">木の体積計算</h1>
+        <h1 class="mb-4">木の体積計算1</h1>
         <form id="volumeForm">
             <div class="form-row">
                 <div class="form-group col-3">
@@ -67,7 +67,7 @@
         
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
+        var beforeNum = 0
         if ('SpeechRecognition' in window) {
             const recognition = new SpeechRecognition();
             recognition.lang = 'ja-JP';  // 日本語に設定
@@ -108,6 +108,8 @@
             const quantityInput = document.getElementById('quantity'+num);
             quantityInput.value = parseInt(quantityInput.value) + 1;
             document.getElementById('quantity'+num).style.backgroundColor = 'red';
+            document.getElementById('quantity'+beroeNum).style.backgroundColor = '';
+            beroeNum = num;
         }
 
         function decrementQuantity(num) {
