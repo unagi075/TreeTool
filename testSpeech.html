@@ -84,7 +84,10 @@
                 const transcript = event.results[0][0].transcript;
                 //最後の数字２桁を抽出
 		        var tmpStr = transcript.replace(/[^0-9]/g, "");
+                alert(transcript);
+                alert(tmpStr);
 		        tmpStr = tmpStr.slice(-2);
+                alert(tmpStr);
                 incrementQuantity(Number(tmpStr));
             });
 
