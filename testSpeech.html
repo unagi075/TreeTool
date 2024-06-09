@@ -59,7 +59,7 @@
 
     <p id="result"></p>
     <div class="fixed-bottom d-flex justify-content-center">
-        <button id="start-button" class="btn btn-primary">音声認識を開始</button>
+        <input type="image" id="start-button" src="png/mic_black.png" width="70" height="70">
     </div>
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -81,6 +81,7 @@
             });
 
             recognition.addEventListener('result', (event) => {
+                document.getElementById('start-button').src="png/mic_black.png"
                 const transcript = event.results[0][0].transcript;
                 //最後の数字２桁を抽出
 		        var tmpStr = transcript.replace(/[^0-9]/g, "");
@@ -89,17 +90,21 @@
             });
 
             recognition.addEventListener('error', (event) => {
+                document.getElementById('start-button').src="png/mic_black.png"
                 resultElement.textContent = `エラー: ${event.error}`;
             });
 
             recognition.addEventListener('end', () => {
+                document.getElementById('start-button').src="png/mic_black.png"
                 startButton.textContent = '音声入力を開始';
             });
 
             recognition.addEventListener('start', () => {
+                document.getElementById('start-button').src="png/mic_red.png"
                 startButton.textContent = '認識中...';
             });
         } else {
+            document.getElementById('start-button').src="png/mic_black.png"
             alert('このブラウザは音声認識をサポートしていません。');
         }
 
