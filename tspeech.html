@@ -170,7 +170,7 @@
 	<div class="fixed-bottom">
         <div class="card text-bg-dark">
             <div class="card-head">
-            <h4 class="mb-2">材積ver1.0f</h4>
+            <h4 class="mb-2">材積ver1.0g</h4>
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -216,7 +216,7 @@
             const resultElement = document.getElementById('result');
 
             startButton.addEventListener('click', () => {
-                const uttr = new SpeechSynthesisUtterance(speechText);
+                const uttr = new SpeechSynthesisUtterance();
                 uttr.lang = 'ja-JP';
                 recognition.start();
             });
