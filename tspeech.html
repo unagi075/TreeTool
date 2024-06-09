@@ -212,12 +212,6 @@
             recognition.lang = 'ja-JP';  // 日本語に設定
             recognition.interimResults = false;  // 中間結果を表示しない
             recognition.maxAlternatives = 1;
-            //(認識結果が生成されるまでの) 無音を検出し、音声入力が続かないと見なす時間の長さ。
-            //recognition.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(6.0);
-			//認識できないサウンド (雑音) のリッスンを継続し、音声入力が終了したと見なし、認識処理を終了するまでの時間の長さ。
-            //recognition.Timeouts.BabbleTimeout = TimeSpan.FromSeconds(4.0);
-			//(認識結果が生成された後の) 無音を検出し、音声入力が終了したと見なす時間の長さ。
-            //recognition.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(0.6);
 
             const startButton = document.getElementById('start-button');
             const resultElement = document.getElementById('result');
@@ -236,7 +230,8 @@
                     incrementQuantity(Number(tmpStr));
                     scrollTo(0, Number(tmpStr)*18-200);
                     var speechText = tmpStr + "センチに一本追加しました。";
-                    const uttr = new SpeechSynthesisUtterance(speechText) speechSynthesis.speak(uttr);
+                    const uttr = new SpeechSynthesisUtterance(speechText);
+                    speechSynthesis.speak(uttr);
                 }else{
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
                     scrollTo(0, 0);
