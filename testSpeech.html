@@ -192,14 +192,14 @@
                 }else{
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
                     scrollTo(0, 0);
-            	    document.getElementById('error-message').innerText = "※音声認識できません";
+            	    document.getElementById('error-message').innerText = "音声認識できません。"+transcript;
                 }
             });
 
             recognition.addEventListener('error', (event) => {
                 resultElement.textContent = `エラー: ${event.error}`;
 		        document.getElementById('start-button').src="png/mic_black.png"
-            	document.getElementById('error-message').innerText = "※音声認識できません";
+            	document.getElementById('error-message').innerText = "※エラーで音声認識できません。${event.error}";
             });
 
             recognition.addEventListener('end', () => {
