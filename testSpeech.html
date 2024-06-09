@@ -9,7 +9,8 @@
 </head>
 <body style="background-color: #ffffff;">
     <div class="container mt-5">
-        <h4 class="mb-4">木の体積計算 ver1.2</h4>
+        <h4 class="mb-4">木の体積計算 ver1.3</h4>
+    	<font color='red'><p id="error-message"></p></font>
             <div class="form-row">
                 <div class="form-group col-3">
                     <label for="diameter">直径</label>
@@ -181,27 +182,35 @@
 
             recognition.addEventListener('result', (event) => {
                 const transcript = event.results[0][0].transcript;
-		document.getElementById('start-button').src="png/mic_black.png"
+	        	document.getElementById('start-button').src="png/mic_black.png"
                 //最後の数字２桁を抽出
-		var tmpStr = transcript.replace(/[^0-9]/g, "");
-		tmpStr = tmpStr.slice(-2);
-                incrementQuantity(Number(tmpStr));
-                scrollTo(0, Number(tmpStr)*8);
+		        var tmpStr = transcript.replace(/[^0-9]/g, "");
+		        tmpStr = tmpStr.slice(-2);
+                if(tmpStr!=""){
+                    incrementQuantity(Number(tmpStr));
+                    scrollTo(0, Number(tmpStr)*8);
+                }
+                document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
+                scrollTo(0, 0);
+            	document.getElementById('error-message').innerText = "※音声認識できません";
             });
 
             recognition.addEventListener('error', (event) => {
                 resultElement.textContent = `エラー: ${event.error}`;
-		document.getElementById('start-button').src="png/mic_black.png"
+		        document.getElementById('start-button').src="png/mic_black.png"
+            	document.getElementById('error-message').innerText = "※音声認識できません";
             });
 
             recognition.addEventListener('end', () => {
                 startButton.textContent = '音声入力を開始';
-		document.getElementById('start-button').src="png/mic_black.png"
+		        document.getElementById('start-button').src="png/mic_black.png"
+            	document.getElementById('error-message').innerText = "";
             });
 
             recognition.addEventListener('start', () => {
                 startButton.textContent = '認識中...';
-		document.getElementById('start-button').src="png/mic_red.png"
+        		document.getElementById('start-button').src="png/mic_red.png"
+            	document.getElementById('error-message').innerText = "";
             });
         } else {
             alert('このブラウザは音声認識をサポートしていません。');
