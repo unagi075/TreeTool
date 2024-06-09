@@ -170,7 +170,7 @@
 	<div class="fixed-bottom">
         <div class="card text-bg-dark">
             <div class="card-head">
-            <h4 class="mb-2">材積ver1.1</h4>
+            <h4 class="mb-2">材積ver1.2</h4>
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -229,8 +229,8 @@
                     incrementQuantity(Number(tmpStr));
                     scrollTo(0, Number(tmpStr)*18-200);
                     var speechText = tmpStr + "センチに一本追加しました。";
-                    alert(speechText);
-                    const uttr = new SpeechSynthesisUtterance(speechText);
+                    const uttr = new SpeechSynthesisUtterance();
+                    uttr.text=speechText;
                     window.speechSynthesis.speak(uttr);
                     alert("1");
                 }else{
