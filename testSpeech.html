@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>木の体積計算</title>
+    <title>材積計算</title>
     <!-- BootstrapのCSSを読み込む -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body style="background-color: #ffffff;">
     <div class="container mt-5">
-        <h4 class="mb-4">木の体積計算 ver1.6</h4>
     	<font color='red'><p id="error-message"></p></font>
         <div class="form-row">
             <div class="form-group col-3">
@@ -170,7 +169,8 @@
     </div>
 	<div class="fixed-bottom">
         <div class="card text-bg-dark">
-            <div class="card-body">
+            <div class="card-head">
+            <h4 class="mb-2">材積計算 ver1.2</h4>
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -196,7 +196,7 @@
                 if(quantity > 0){
                     var volume = zaitanka * quantity;
                     total = total + volume;
-                    var result = diameter + "cm::" + quantity + " 本 × 単材積:" + zaitanka + "m³ = 材積:" + volume + "m³\n";
+                    var result = diameter + "cm:: " + quantity + " 本 × ②単材積: " + zaitanka + "m³ = 材積: " + volume + "m³ \n";
                     document.getElementById('result').innerText = document.getElementById('result').innerText + result;
                 }
             }
