@@ -9,7 +9,7 @@
 </head>
 <body style="background-color: #ffffff;">
     <div class="container mt-5">
-        <h4 class="mb-4">木の体積計算 ver1.3</h4>
+        <h4 class="mb-4">木の体積計算 ver1.4</h4>
     	<font color='red'><p id="error-message"></p></font>
         <div class="form-row">
             <div class="form-group col-3">
@@ -227,18 +227,18 @@
 		        tmpStr = tmpStr.slice(-2);
                 if(tmpStr!=""){
                     incrementQuantity(Number(tmpStr));
-                    scrollTo(0, Number(tmpStr)*15-70);
+                    scrollTo(0, Number(tmpStr)*13-80);
                 }else{
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
                     scrollTo(0, 0);
-            	    document.getElementById('error-message').innerText = "音声認識できません。"+transcript;
+            	    document.getElementById('error-message').innerText = "※数値を認識できません。認識ワード="+transcript;
                 }
             });
 
             recognition.addEventListener('error', (event) => {
                 resultElement.textContent = `エラー: ${event.error}`;
 		        document.getElementById('start-button').src="png/mic_black.png"
-            	document.getElementById('error-message').innerText =  `エラー: ${event.error}`;
+            	document.getElementById('error-message').innerText =  `※音声認識エラー: ${event.error}`;
             });
 
             recognition.addEventListener('end', () => {
