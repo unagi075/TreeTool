@@ -235,6 +235,8 @@
                 if(tmpStr!=""){
                     incrementQuantity(Number(tmpStr));
                     scrollTo(0, Number(tmpStr)*18-200);
+                    var speechText = tmpStr + "センチに一本追加しました。";
+                    const uttr = new SpeechSynthesisUtterance(speechText) speechSynthesis.speak(uttr);
                 }else{
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
                     scrollTo(0, 0);
