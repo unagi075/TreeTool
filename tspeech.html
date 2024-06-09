@@ -231,7 +231,8 @@
                     var speechText = tmpStr + "センチに一本追加しました。";
                     alert(speechText);
                     const uttr = new SpeechSynthesisUtterance(speechText);
-                    speechSynthesis.speak(uttr);
+                    window.speechSynthesis.speak(uttr);
+                    alert("1");
                 }else{
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
                     scrollTo(0, 0);
