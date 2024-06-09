@@ -183,7 +183,6 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        alert("1");
         const endButton = document.getElementById('end-button');
 	    endButton.addEventListener('click', () => {
             document.getElementById('result').innerText = '';
@@ -230,6 +229,7 @@
                     incrementQuantity(Number(tmpStr));
                     scrollTo(0, Number(tmpStr)*18-200);
                     var speechText = tmpStr + "センチに一本追加しました。";
+                    alert(speechText);
                     const uttr = new SpeechSynthesisUtterance(speechText);
                     speechSynthesis.speak(uttr);
                 }else{
