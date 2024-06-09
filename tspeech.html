@@ -183,7 +183,7 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-alert("1");
+        alert("1");
         const endButton = document.getElementById('end-button');
 	    endButton.addEventListener('click', () => {
             document.getElementById('result').innerText = '';
@@ -269,9 +269,9 @@ alert("1");
             quantityInput.value = parseInt(quantityInput.value) + 1;
             document.getElementById('quantity'+num).style.backgroundColor = '#dcffff';
             if (beforeNum != 0 && beforeNum != num) {
- 	        document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
-	    }
-	    beforeNum = num;
+ 	            document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
+	        }
+	        beforeNum = num;
         }
 
         function decrementQuantity(num) {
@@ -279,7 +279,6 @@ alert("1");
             const newValue = parseInt(quantityInput.value) - 1;
             quantityInput.value = Math.max(newValue, 0);
         }
-
     </script>
 </body>
 </html>
