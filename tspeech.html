@@ -235,6 +235,7 @@
                     scrollTo(0, 0);
             	    document.getElementById('error-message').innerText = "※数値を認識できません。認識ワード="+transcript;
                 }
+                recognition.start();
             });
 
             recognition.addEventListener('error', (event) => {
