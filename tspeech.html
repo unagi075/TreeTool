@@ -9,7 +9,7 @@
 </head>
 <body style="background-color: #ffffff;">
     <div class="container mt-5">
-        <h4 class="mb-4">木の体積計算 ver1.2</h4>
+        <h4 class="mb-4">木の体積計算 ver1.3</h4>
     	<font color='red'><p id="error-message"></p></font>
         <div class="form-row">
             <div class="form-group col-3">
@@ -192,15 +192,15 @@
                 var diameter = document.getElementById('diameter'+num).value;
                 var length   = document.getElementById('length'+num).value;
                 var quantity = document.getElementById('quantity'+num).value;
-                var zaitanka = Math.round(diameter*diameter*length/10)/100;
+                var zaitanka = Math.round(diameter*diameter*length/10)/1000;
                 if(quantity > 0){
                     var volume = zaitanka * quantity;
                     total = total + volume;
-                    var result = "末口: " + diameter + "cm ：①本数 " + quantity + " × ②単材積(m³) " + zaitanka + " = 材積(m³) " + volume + "\n";
+                    var result = "末口: " + diameter + "cm ： ①本数: " + quantity + " 本 × ②単材積: " + zaitanka + "m³ = 材積: " + volume + "m³ \n";
                     document.getElementById('result').innerText = document.getElementById('result').innerText + result;
                 }
             }
-            document.getElementById('result').innerText = document.getElementById('result').innerText + "合計 : " + total.toFixed(2)  +"m³\n\n\n\n";
+            document.getElementById('result').innerText = document.getElementById('result').innerText + "合計: " + total.toFixed(3)  +"m³\n\n\n\n";
 	        scrollTo(0, 2000);
         });
 
