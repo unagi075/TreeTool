@@ -189,10 +189,11 @@
                 if(tmpStr!=""){
                     incrementQuantity(Number(tmpStr));
                     scrollTo(0, Number(tmpStr)*8);
+                }else{
+                    document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
+                    scrollTo(0, 0);
+            	    document.getElementById('error-message').innerText = "※音声認識できません";
                 }
-                document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
-                scrollTo(0, 0);
-            	document.getElementById('error-message').innerText = "※音声認識できません";
             });
 
             recognition.addEventListener('error', (event) => {
@@ -204,7 +205,6 @@
             recognition.addEventListener('end', () => {
                 startButton.textContent = '音声入力を開始';
 		        document.getElementById('start-button').src="png/mic_black.png"
-            	document.getElementById('error-message').innerText = "";
             });
 
             recognition.addEventListener('start', () => {
