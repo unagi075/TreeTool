@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>木の体積計算</title>
+    <title>材積計算</title>
     <!-- BootstrapのCSSを読み込む -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body style="background-color: #ffffff;">
     <div class="container mt-5">
-        <h4 class="mb-4">木の体積計算 ver1.3</h4>
     	<font color='red'><p id="error-message"></p></font>
         <div class="form-row">
             <div class="form-group col-3">
@@ -170,7 +169,8 @@
     </div>
 	<div class="fixed-bottom">
         <div class="card text-bg-dark">
-            <div class="card-body">
+            <div class="card-head">
+            <h4 class="mb-2">材積ver1.0</h4>
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -196,7 +196,7 @@
                 if(quantity > 0){
                     var volume = zaitanka * quantity;
                     total = total + volume;
-                    var result = "末口: " + diameter + "cm ： ①本数: " + quantity + " 本 × ②単材積: " + zaitanka + "m³ = 材積: " + volume + "m³ \n";
+                    var result = diameter + "cm:: " + ( '00' + quantity ).slice( -2 ) + " 本 × 単材積: " + zaitanka.toFixed(3) + "m³ = 材積: " + volume.toFixed(3) + "m³ \n";
                     document.getElementById('result').innerText = document.getElementById('result').innerText + result;
                 }
             }
@@ -212,6 +212,12 @@
             recognition.lang = 'ja-JP';  // 日本語に設定
             recognition.interimResults = false;  // 中間結果を表示しない
             recognition.maxAlternatives = 1;
+            //(認識結果が生成されるまでの) 無音を検出し、音声入力が続かないと見なす時間の長さ。
+            recognition.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(6.0);
+			//認識できないサウンド (雑音) のリッスンを継続し、音声入力が終了したと見なし、認識処理を終了するまでの時間の長さ。
+            recognition.Timeouts.BabbleTimeout = TimeSpan.FromSeconds(4.0);
+			//(認識結果が生成された後の) 無音を検出し、音声入力が終了したと見なす時間の長さ。
+            recognition.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(0.6);
 
             const startButton = document.getElementById('start-button');
             const resultElement = document.getElementById('result');
