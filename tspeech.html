@@ -9,7 +9,7 @@
 </head>
 <body style="background-color: #ffffff;">
     <div class="container mt-5">
-        <h4 class="mb-4">木の体積計算 ver1.2</h4>
+        <h4 class="mb-4">木の体積計算 ver1.3</h4>
     	<font color='red'><p id="error-message"></p></font>
         <div class="form-row">
             <div class="form-group col-3">
@@ -227,7 +227,7 @@
 		        tmpStr = tmpStr.slice(-2);
                 if(tmpStr!=""){
                     incrementQuantity(Number(tmpStr));
-                    scrollTo(0, Number(tmpStr)*20-50);
+                    scrollTo(0, Number(tmpStr)*15-70);
                 }else{
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
                     scrollTo(0, 0);
