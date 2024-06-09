@@ -192,10 +192,11 @@
                 var diameter = document.getElementById('diameter'+num).value;
                 var length   = document.getElementById('length'+num).value;
                 var quantity = document.getElementById('quantity'+num).value;
+                var zaitanka = Math.round(diameter*diameter*length/10)/100;
                 if(quantity > 0){
-                    var volume = (Math.PI * Math.pow(diameter / 2, 2)) * quantity * length*100 /100000;
+                    var volume = zaitanka * quantity;
                     total = total + volume;
-                    var result = "半径 : " + diameter + "cm × 長さ : " + length + "m × 本数 : " + quantity + " = " + volume.toFixed(2) +"m³\n";
+                    var result = "末口: " + diameter + "cm ：①本数 " + quantity + " × ②単材積(m³) " + zaitanka + " = 材積(m³) " + volume + "\n";
                     document.getElementById('result').innerText = document.getElementById('result').innerText + result;
                 }
             }
