@@ -9,7 +9,7 @@
 </head>
 <body style="background-color: #ffffff;">
     <div class="container mt-5">
-        <h4 class="mb-4">木の体積計算 ver1.1</h4>
+        <h4 class="mb-4">木の体積計算 ver1.2</h4>
             <div class="form-row">
                 <div class="form-group col-3">
                     <label for="diameter">直径</label>
@@ -186,7 +186,7 @@
 		var tmpStr = transcript.replace(/[^0-9]/g, "");
 		tmpStr = tmpStr.slice(-2);
                 incrementQuantity(Number(tmpStr));
-                scrollTo(0, Number(tmpStr)*5);
+                scrollTo(0, Number(tmpStr)*8);
             });
 
             recognition.addEventListener('error', (event) => {
