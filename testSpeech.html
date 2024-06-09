@@ -196,7 +196,7 @@
                 if(quantity > 0){
                     var volume = zaitanka * quantity;
                     total = total + volume;
-                    var result = diameter + "cm:: " + quantity + " 本 × 単材積: " + zaitanka + "m³ = 材積: " + volume + "m³ \n";
+                    var result = diameter + "cm:: " + ( '00' + quantity ).slice( -2 ) + " 本 × 単材積: " + zaitanka.toFixed(3) + "m³ = 材積: " + volume.toFixed(3) + "m³ \n";
                     document.getElementById('result').innerText = document.getElementById('result').innerText + result;
                 }
             }
