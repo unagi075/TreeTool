@@ -174,7 +174,7 @@
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
-		    		<input type="image" id="start-button" src="png/mic_black.png" width="70" height="70">
+		    		<input type="image" id="start-button" src="png/mic_black.png" width="60" height="60">
 		    	</div>
 			    <div class="fixed-bottom d-flex justify-content-end">
 		    	    <button id="end-button" class="btn btn-dark">計算</button>
@@ -227,7 +227,7 @@
 		        tmpStr = tmpStr.slice(-2);
                 if(tmpStr!=""){
                     incrementQuantity(Number(tmpStr));
-                    scrollTo(0, Number(tmpStr)*8);
+                    scrollTo(0, Number(tmpStr)*10);
                 }else{
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
                     scrollTo(0, 0);
