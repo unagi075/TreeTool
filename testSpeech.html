@@ -9,7 +9,7 @@
 </head>
 <body style="background-color: #ffffff;">
     <div class="container mt-5">
-        <h4 class="mb-4">木の体積計算 ver1.0</h4>
+        <h4 class="mb-4">木の体積計算 ver1.1</h4>
             <div class="form-row">
                 <div class="form-group col-3">
                     <label for="diameter">直径</label>
@@ -160,7 +160,7 @@
                 }
             }
             document.getElementById('result').innerText = document.getElementById('result').innerText + "合計 : " + total.toFixed(2)  +"m³\n\n\n\n";
-	        scrollBy(0, 2000);
+	        scrollTo(0, 2000);
         });
 
         var beforeNum=0;
@@ -186,7 +186,7 @@
 		var tmpStr = transcript.replace(/[^0-9]/g, "");
 		tmpStr = tmpStr.slice(-2);
                 incrementQuantity(Number(tmpStr));
-                scrollBy(0, Number(tmpStr)*5);
+                scrollTo(0, Number(tmpStr)*5);
             });
 
             recognition.addEventListener('error', (event) => {
