@@ -168,14 +168,20 @@
             <p id="result"></p>
         </div>
     </div>
-    <div class="card-footer text-body-secondary">
-    <div class="fixed-bottom d-flex justify-content-center">
-    	<input type="image" id="start-button" src="png/mic_black.png" width="70" height="70">
+	<div class="fixed-bottom">
+        <div class="card text-bg-dark">
+            <div class="card-body">
+		    	　<br>
+            </div>
+        </div>
+		    	<div class="fixed-bottom d-flex justify-content-center">
+		    		<input type="image" id="start-button" src="png/mic_black.png" width="70" height="70">
+		    	</div>
+			    <div class="fixed-bottom d-flex justify-content-end">
+		    	    <button id="end-button" class="btn btn-dark">計算</button>
+		    	</div>
     </div>
-    <div class="fixed-bottom d-flex justify-content-end">
-	    <button id="end-button" class="btn btn-dark">計算</button>
-    </div>
-    
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
 
@@ -183,7 +189,7 @@
 	    endButton.addEventListener('click', () => {
             document.getElementById('result').innerText = '';
             var total = 0;
-            for(var num=14; num<=40; num = num + 2){
+            for(var num=14; num<=50; num = num + 2){
                 var diameter = document.getElementById('diameter'+num).value;
                 var length   = document.getElementById('length'+num).value;
                 var quantity = document.getElementById('quantity'+num).value;
