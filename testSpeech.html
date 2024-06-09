@@ -145,23 +145,22 @@
     <script>
 
         const endButton = document.getElementById('end-button');
-	endButton.addEventListener('click', () => {
-	    document.getElementById('result').innerText = '';
-	    var total = 0;
-	    for(var num=14; num<=40; num = num + 2){
-		var diameter = document.getElementById('diameter'+num).value;
-		var length   = document.getElementById('length'+num).value;
-		var quantity = document.getElementById('quantity'+num).value;
-		if(quantity > 0){
-		    var volume = (Math.PI * Math.pow(diameter / 2, 2)) * quantity * length*100 /100000;
+	    endButton.addEventListener('click', () => {
+            document.getElementById('result').innerText = '';
+            var total = 0;
+            for(var num=14; num<=40; num = num + 2){
+                var diameter = document.getElementById('diameter'+num).value;
+                var length   = document.getElementById('length'+num).value;
+                var quantity = document.getElementById('quantity'+num).value;
+                if(quantity > 0){
+                    var volume = (Math.PI * Math.pow(diameter / 2, 2)) * quantity * length*100 /100000;
                     total = total + volume;
-		    var result = "半径 : " + diameter + "cm × 長さ : " + length + "m × 本数 : " + quantity + " = " + volume.toFixed(2) +"m³\n";
-		    document.getElementById('result').innerText = document.getElementById('result').innerText + result;
-		}
-	    }
+                    var result = "半径 : " + diameter + "cm × 長さ : " + length + "m × 本数 : " + quantity + " = " + volume.toFixed(2) +"m³\n";
+                    document.getElementById('result').innerText = document.getElementById('result').innerText + result;
+                }
+            }
             document.getElementById('result').innerText = document.getElementById('result').innerText + "合計 : " + total.toFixed(2)  +"m³\n\n\n\n";
-	    scrollBy(0, 2000);
-
+	        scrollBy(0, 2000);
         });
 
         var beforeNum=0;
@@ -187,8 +186,7 @@
 		var tmpStr = transcript.replace(/[^0-9]/g, "");
 		tmpStr = tmpStr.slice(-2);
                 incrementQuantity(Number(tmpStr));
-                scrollBy(0, Number(tmpStr)*10);
-
+                scrollBy(0, Number(tmpStr)*5);
             });
 
             recognition.addEventListener('error', (event) => {
