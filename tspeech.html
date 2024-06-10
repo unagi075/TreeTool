@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
             <h4 class="mb-2">材積</h4>
-            ver1.0p
+            ver1.0q
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -205,6 +205,7 @@
         });
 
         var beforeNum=0;
+        var recFlg = 0;
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         if ('SpeechRecognition' in window) {
@@ -217,6 +218,7 @@
             const resultElement = document.getElementById('result');
 
             startButton.addEventListener('click', () => {
+                recFlg=1;
                 recognition.start();
             });
 
@@ -237,6 +239,7 @@
                     scrollTo(0, 0);
             	    document.getElementById('error-message').innerText = "※数値を認識できません。認識ワード="+transcript;
                 }
+                recFlg=0;
             });
 
             recognition.addEventListener('error', (event) => {
@@ -260,8 +263,11 @@
         }
 
         function recStart(){
-            alert("1");
-            recognition.start();
+            alert(recFlg);
+            if(recFlg == 0){
+                recFlg=1;
+                recognition.start();
+            }
         }
 
         function incrementQuantity(num) {
