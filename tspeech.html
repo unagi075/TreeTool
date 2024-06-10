@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
             <h4 class="mb-2">材積</h4>
-            ver1.0l
+            ver1.0m
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -204,6 +204,7 @@
 	        scrollTo(0, 2000);
         });
 
+        
         var beforeNum=0;
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -220,6 +221,13 @@
                 recognition.start();
             });
 
+            const fetchDataInInterval = () => {
+                recognition.start().then(() => {
+                    setTimeout(() => {
+                    fetchDataInInterval()
+                    }, 1000)
+                })
+            }
             recognition.addEventListener('result', (event) => {
                 const transcript = event.results[0][0].transcript;
 	        	document.getElementById('start-button').src="png/mic_black.png"
