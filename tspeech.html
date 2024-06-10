@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
             <h4 class="mb-2">材積</h4>
-            ver1.0q
+            ver1.0r
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -187,6 +187,7 @@
         const endButton = document.getElementById('end-button');
 	    endButton.addEventListener('click', () => {
             document.getElementById('result').innerText = '';
+            recognition.start();
             var total = 0;
             for(var num=14; num<=50; num = num + 2){
                 var diameter = document.getElementById('diameter'+num).value;
@@ -264,7 +265,6 @@
 
         function recStart(){
             if(recFlg == 0){
-                alert(recFlg);
                 recFlg=1;
                 recognition.start();
             }
