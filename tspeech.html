@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
             <h4 class="mb-2">材積</h4>
-            ver1.0s
+            ver1.0t
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -223,6 +223,12 @@
                 recognition.start();
             });
 
+            function recStart(){
+                if(recFlg == 0){
+                    recFlg=1;
+                    recognition.start();
+                }
+            }
             window.setInterval(recStart, 1000);
 
             recognition.addEventListener('result', (event) => {
@@ -261,13 +267,6 @@
             });
         } else {
             alert('このブラウザは音声認識をサポートしていません。');
-        }
-
-        function recStart(){
-            if(recFlg == 0){
-                recFlg=1;
-                recognition.start();
-            }
         }
 
         function incrementQuantity(num) {
