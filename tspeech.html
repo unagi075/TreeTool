@@ -171,15 +171,15 @@
         <div class="card text-bg-dark">
             <div class="card-head">
             <h4 class="mb-2">材積</h4>
-            ver2.0c
+            ver2.0d
             </div>
         </div>
-		    	<div class="fixed-bottom d-flex justify-content-center">
-		    		<input type="image" id="start-button" src="png/mic_black.png" width="90" height="90">
-		    	</div>
-			    <div class="fixed-bottom d-flex justify-content-end">
-		    	    <button id="end-button" class="btn btn-dark">計算</button>
-		    	</div>
+		    <div class="fixed-bottom d-flex justify-content-center">
+		    	<input type="image" id="start-button" src="png/mic_black.png" width="90" height="90">
+		    </div>
+			<div class="fixed-bottom d-flex justify-content-end">
+		    	<button id="end-button" class="btn btn-dark">計算</button>
+		    </div>
     </div>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -203,7 +203,6 @@
             }
             document.getElementById('result').innerText = document.getElementById('result').innerText + "合計: " + total.toFixed(3)  +"m³\n\n\n\n";
 	        scrollTo(0, 2000);
-            recognition.start();
         });
 
         var beforeNum=0;
