@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
             <h4 class="mb-2">材積</h4>
-            ver1.0t
+            ver2.0b
             </div>
         </div>
 		    	<div class="fixed-bottom d-flex justify-content-center">
@@ -186,6 +186,7 @@
     <script>
         const endButton = document.getElementById('end-button');
 	    endButton.addEventListener('click', () => {
+            
             document.getElementById('result').innerText = '';
             var total = 0;
             for(var num=14; num<=50; num = num + 2){
@@ -207,6 +208,7 @@
 
         var beforeNum=0;
         var recFlg = 1;
+        var recrcvflg = 0;
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         if ('SpeechRecognition' in window) {
@@ -219,12 +221,22 @@
             const resultElement = document.getElementById('result');
 
             startButton.addEventListener('click', () => {
-                recFlg=1;
-                recognition.start();
+                if(recrcvflg==0){
+                    var speechText = "音声受付開始";
+                    const uttr = new SpeechSynthesisUtterance(speechText);
+                    uttr.lang = 'ja-JP';
+                    speechSynthesis.speak(uttr);
+                    recFlg=1;
+                    recrcvflg=1;
+                    recognition.start();
+                }else{
+                    recrcvflg=0;
+                }
+                
             });
 
             function recStart(){
-                if(recFlg == 0){
+                if(recFlg == 0 && recrcvflg==1){
                     recFlg=1;
                     recognition.start();
                 }
@@ -287,6 +299,7 @@
                 document.getElementById('diameter'+beforeNum).style.backgroundColor = '';
 	        }
 	        beforeNum = num;
+            await sleep(2000);
         }
 
         function decrementQuantity(num) {
@@ -294,6 +307,8 @@
             const newValue = parseInt(quantityInput.value) - 1;
             quantityInput.value = Math.max(newValue, 0);
         }
+
+        const sleep = (time) => new Promise((r) => setTimeout(r, time));//timeはミリ
     </script>
 </body>
 </html>
