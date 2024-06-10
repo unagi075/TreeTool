@@ -206,7 +206,7 @@
         });
 
         var beforeNum=0;
-        var recFlg = 0;
+        var recFlg = 1;
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         if ('SpeechRecognition' in window) {
@@ -229,7 +229,7 @@
                     recognition.start();
                 }
             }
-            window.setInterval(recStart, 1000);
+            window.setInterval(recStart, 100);
 
             recognition.addEventListener('result', (event) => {
                 const transcript = event.results[0][0].transcript;
