@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
                 <h4 class="mb-2" id="version" >材積</h4>
-                ver2.0i
+                ver2.0j
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -221,7 +221,7 @@
 
             startButton.addEventListener('click', () => {
                 if(recrcvflg==0){
-                    var speechText = "音声受付開始";
+                    var speechText = "";
                     const uttr = new SpeechSynthesisUtterance(speechText);
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
