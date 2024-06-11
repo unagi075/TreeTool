@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
                 <h4 class="mb-2" id="version" >材積</h4>
-                ver2.0k
+                ver2.0l
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -262,6 +262,8 @@
                     scrollTo(0, Number(tmpStr)*18-200);
                     keywordErrorFlg = false;
                 }
+                alert(keywordErrorFlg);
+                alert(tmpStr);
                 //キーワードが認識できない場合
                 if(keywordErrorFlg==True){
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
