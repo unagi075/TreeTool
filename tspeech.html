@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
                 <h4 class="mb-2" id="version" >材積</h4>
-                ver2.0j
+                ver2.0k
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -249,14 +249,21 @@
             recognition.addEventListener('result', (event) => {
                 const transcript = event.results[0][0].transcript;
 	        	document.getElementById('start-button').src="png/mic_black.png"
-                //最後の数字２桁を抽出
-		        var tmpStr = transcript.replace(/[^0-9]/g, "");
-		        tmpStr = tmpStr.slice(-2);
-                if(tmpStr!=""){
+                var keywordErrorFlg = true;
+                //キーワード：「終わり」があれば音声入力終了
+                if(transscript.indexOf("終わり")>0){
+                    recrcvflg = 0;
+                    keywordErrorFlg = false;
+                }
+                //キーワード：数字があれば最後の２桁を抽出して、１４～５０までの数字であれば本数を上げる
+                tmpStr = transcript.replace(/[^0-9]/g, "").slice(-2);
+                if("14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>0){
                     incrementQuantity(Number(tmpStr));
                     scrollTo(0, Number(tmpStr)*18-200);
-                    
-                }else{
+                    keywordErrorFlg = false;
+                }
+                //キーワードが認識できない場合
+                if(keywordErrorFlg==True){
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
                     scrollTo(0, 0);
             	    document.getElementById('error-message').innerText = "※数値を認識できません。認識ワード="+transcript;
@@ -284,10 +291,7 @@
             alert('このブラウザは音声認識をサポートしていません。');
         }
 
-        async function incrementQuantity(num) {
-            //const uttr = new SpeechSynthesisUtterance("おはよう");
-            //uttr.lang = 'ja-JP';
-            //speechSynthesis.speak(uttr);
+        function incrementQuantity(num) {
             
             var speechText = num + "センチに追加";
             const uttr = new SpeechSynthesisUtterance(speechText);
@@ -302,7 +306,7 @@
                 document.getElementById('diameter'+beforeNum).style.backgroundColor = '';
 	        }
 	        beforeNum = num;
-            await sleep(2000);
+            //await sleep(2000);
         }
 
         function decrementQuantity(num) {
