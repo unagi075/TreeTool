@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
                 <h4 class="mb-2" id="version" >材積</h4>
-                ver2.0h
+                ver2.0i
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -221,10 +221,10 @@
 
             startButton.addEventListener('click', () => {
                 if(recrcvflg==0){
-                    //var speechText = "音声受付開始";
-                    //const uttr = new SpeechSynthesisUtterance(speechText);
-                    //uttr.lang = 'ja-JP';
-                    //speechSynthesis.speak(uttr);
+                    var speechText = "音声受付開始";
+                    const uttr = new SpeechSynthesisUtterance(speechText);
+                    uttr.lang = 'ja-JP';
+                    speechSynthesis.speak(uttr);
                     recFlg=1;
                     recrcvflg=1;
                     recognition.start();
@@ -240,7 +240,7 @@
                     try{
                         recognition.start();
                     } catch(e) {
-                        document.getElementById('version').innerText = recFlg + " | " + recrcvflg + " | " + e.message;
+                        recFlg=0;
                     }
                 }
             }
