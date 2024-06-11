@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
                 <h4 class="mb-2" id="version" >材積</h4>
-                ver2.0g
+                ver2.0h
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -235,10 +235,13 @@
             });
 
             function recStart(){
-                document.getElementById('version').innerText = recFlg + " | " + recrcvflg;
                 if(recFlg == 0 && recrcvflg==1){
                     recFlg=1;
-                    recognition.start();
+                    try{
+                        recognition.start();
+                    } catch(e) {
+                        document.getElementById('version').innerText = recFlg + " | " + recrcvflg + " | " + e.message;
+                    }
                 }
             }
             window.setInterval(recStart, 500);
