@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
                 <h4 class="mb-2" id="version" >材積</h4>
-                ver2.5a
+                ver2.5b
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -237,7 +237,7 @@
 
             function recStart(){
                 if(recrcvflg==1){
-                    if(recFlg == 6 ){
+                    if(recFlg == 3 ){
                         try{
                             recognition.start();
                         } catch(e) {
@@ -245,8 +245,8 @@
                         }
 
                     }
-                    if(recFlg < 6){
-                        recFlg=recFlg+1;
+                    if(recFlg <= 6){
+                        recFlg = recFlg + 1;
                     }
                 }
             }
