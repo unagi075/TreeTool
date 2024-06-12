@@ -225,8 +225,8 @@
                     const uttr = new SpeechSynthesisUtterance(speechText);
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
-                    recFlg=1;
-                    recrcvflg=7;
+                    recFlg=7;
+                    recrcvflg=1;
                     alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
                     recognition.start();
                 }else{
