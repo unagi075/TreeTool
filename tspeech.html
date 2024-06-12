@@ -237,6 +237,7 @@
 
             function recStart(){
                 if(recrcvflg==1){
+                    document.getElementById('result').innerText = recFlg;
                     if(recFlg == 3 ){
                         try{
                             recognition.start();
