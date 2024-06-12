@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
                 <h4 class="mb-2" id="version" >材積</h4>
-                ver2.0o
+                ver2.0p
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -260,13 +260,24 @@
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
                 }
+                //キーワード：数字＋キャンセルがあれば本数を下げる
+                tmpInt = transcript.indexOf("キャンセル")-2
+                if(tmpInt>=0){
+                    tmpStr = transcript.substr(tmpInt,2);
+                    if(tmpStr!="" && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
+                        decrementQuantity(Number(tmpStr));
+                        scrollTo(0, Number(tmpStr)*18-200);
+                        keywordErrorFlg = false;
+                    }
+                }
                 //キーワード：数字があれば最後の２桁を抽出して、１４～５０までの数字であれば本数を上げる
                 tmpStr = transcript.replace(/[^0-9]/g, "").slice(-2);
-                if(tmpStr!="" && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
+                if(keywordErrorFlg==true && tmpStr!="" && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
                     incrementQuantity(Number(tmpStr));
                     scrollTo(0, Number(tmpStr)*18-200);
                     keywordErrorFlg = false;
                 }
+
                 //キーワードが認識できない場合
                 if(keywordErrorFlg==true){
                     document.getElementById('quantity'+beforeNum).style.backgroundColor = '';
@@ -297,7 +308,7 @@
 
         function incrementQuantity(num) {
             
-            var speechText = num + "センチに追加";
+            var speechText = "　　" + num + "センチに追加";
             const uttr = new SpeechSynthesisUtterance(speechText);
             uttr.lang = 'ja-JP';
             speechSynthesis.speak(uttr);
@@ -314,6 +325,10 @@
         }
 
         function decrementQuantity(num) {
+            var speechText = "　　" + num + "センチを削減";
+            const uttr = new SpeechSynthesisUtterance(speechText);
+            uttr.lang = 'ja-JP';
+            speechSynthesis.speak(uttr);
             const quantityInput = document.getElementById('quantity'+num);
             const newValue = parseInt(quantityInput.value) - 1;
             quantityInput.value = Math.max(newValue, 0);
