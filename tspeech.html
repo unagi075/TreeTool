@@ -171,7 +171,7 @@
         <div class="card text-bg-dark">
             <div class="card-head">
                 <h4 class="mb-2" id="version" >材積</h4>
-                ver2.5
+                ver2.5a
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -226,7 +226,7 @@
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
                     recFlg=1;
-                    recrcvflg=1;
+                    recrcvflg=7;
                     alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
                     recognition.start();
                 }else{
@@ -236,12 +236,17 @@
             });
 
             function recStart(){
-                if(recFlg == 0 && recrcvflg==1){
-                    recFlg=1;
-                    try{
-                        recognition.start();
-                    } catch(e) {
-                        recFlg=0;
+                if(recrcvflg==1){
+                    if(recFlg == 6 ){
+                        try{
+                            recognition.start();
+                        } catch(e) {
+                            recFlg=5;
+                        }
+
+                    }
+                    if(recFlg < 6){
+                        recFlg=recFlg+1;
                     }
                 }
             }
@@ -313,7 +318,7 @@
 
         function incrementQuantity(num) {
             
-            var speechText = "　　" + num + "センチに追加";
+            var speechText = num + "センチに追加";
             const uttr = new SpeechSynthesisUtterance(speechText);
             uttr.lang = 'ja-JP';
             speechSynthesis.speak(uttr);
@@ -330,7 +335,7 @@
         }
 
         function decrementQuantity(num) {
-            var speechText = "　　" + num + "センチを削減";
+            var speechText = num + "センチを削減";
             const uttr = new SpeechSynthesisUtterance(speechText);
             uttr.lang = 'ja-JP';
             speechSynthesis.speak(uttr);
