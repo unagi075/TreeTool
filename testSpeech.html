@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>材積算</title>
+    <title>材積計</title>
     <!-- BootstrapのCSSを読み込む -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -12,7 +12,7 @@
         <table class="table-dark fixed-top col-sm">
 	        <tbody>
 	        	<tr>
-        	    	<td><h5 id="version">材積算 ver3.0a</h5></td>
+        	    	<td><h5 id="version">材積算 ver3.0b</h5></td>
 	    			<td><div class="input-group d-flex justify-content-center">
 			    		<span class="input-group-text" id="basic-addon1">長さ(m)</span>
 						<input type="number" id="length" min="1" max="5" step="0.5" value="4" required>
@@ -23,13 +23,15 @@
 		</table>
         <div class="form-row">
     		<font color='red'><p id="error-message"></p></font>
-            <div class="form-group col-4">
-                <label for="diameter">直径(cm)</label>
-                <input type="number" id="diameter14" class="form-control" min="14" max="40" step="2" value="14" required>
+            <div class="form-group col-6">
+            	<div class="input-group">
+        	        <span class="input-group-text" id="basic-addon1">経口(cm)</span>
+    	            <input type="number" id="diameter14" class="form-control" min="14" max="40" step="2" value="14" required>
+	            </div>
             </div>
-            <div class="form-group col-8">
-                <label for="quantity">本数</label>
+            <div class="form-group col-6">
                 <div class="input-group">
+	                <span class="input-group-text" id="basic-addon1">本数</span>
                     <div class="input-group-prepend">
                         <button type="button" class="btn btn-dark" onclick="decrementQuantity(14)">-</button>
                     </div>
@@ -41,114 +43,115 @@
             </div>
 
             <!-- ここから繰り返し -->
-			<div class='form-group col-4'><input type='number' id='diameter16' class='form-control' min='14' max='40' step='2' value='16' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(16)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter16' class='form-control' min='14' max='40' step='2' value='16' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(16)'>-</button></div>
 			<input type='number' id='quantity16' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(16)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter18' class='form-control' min='14' max='40' step='2' value='18' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(18)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter18' class='form-control' min='14' max='40' step='2' value='18' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(18)'>-</button></div>
 			<input type='number' id='quantity18' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(18)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter20' class='form-control' min='14' max='40' step='2' value='20' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(20)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter20' class='form-control' min='14' max='40' step='2' value='20' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(20)'>-</button></div>
 			<input type='number' id='quantity20' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(20)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter22' class='form-control' min='14' max='40' step='2' value='22' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(22)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter22' class='form-control' min='14' max='40' step='2' value='22' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(22)'>-</button></div>
 			<input type='number' id='quantity22' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(22)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter24' class='form-control' min='14' max='40' step='2' value='24' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(24)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter24' class='form-control' min='14' max='40' step='2' value='24' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(24)'>-</button></div>
 			<input type='number' id='quantity24' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(24)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter26' class='form-control' min='14' max='40' step='2' value='26' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(26)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter26' class='form-control' min='14' max='40' step='2' value='26' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(26)'>-</button></div>
 			<input type='number' id='quantity26' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(26)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter28' class='form-control' min='14' max='40' step='2' value='28' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(28)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter28' class='form-control' min='14' max='40' step='2' value='28' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(28)'>-</button></div>
 			<input type='number' id='quantity28' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(28)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter30' class='form-control' min='14' max='40' step='2' value='30' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(30)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter30' class='form-control' min='14' max='40' step='2' value='30' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(30)'>-</button></div>
 			<input type='number' id='quantity30' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(30)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter32' class='form-control' min='14' max='40' step='2' value='32' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(32)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter32' class='form-control' min='14' max='40' step='2' value='32' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(32)'>-</button></div>
 			<input type='number' id='quantity32' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(32)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter34' class='form-control' min='14' max='40' step='2' value='34' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(34)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter34' class='form-control' min='14' max='40' step='2' value='34' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(34)'>-</button></div>
 			<input type='number' id='quantity34' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(34)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter36' class='form-control' min='14' max='40' step='2' value='36' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(36)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter36' class='form-control' min='14' max='40' step='2' value='36' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(36)'>-</button></div>
 			<input type='number' id='quantity36' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(36)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter38' class='form-control' min='14' max='40' step='2' value='38' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(38)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter38' class='form-control' min='14' max='40' step='2' value='38' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(38)'>-</button></div>
 			<input type='number' id='quantity38' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(38)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter40' class='form-control' min='14' max='40' step='2' value='40' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(40)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter40' class='form-control' min='14' max='40' step='2' value='40' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(40)'>-</button></div>
 			<input type='number' id='quantity40' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(40)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter42' class='form-control' min='14' max='40' step='2' value='42' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(42)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter42' class='form-control' min='14' max='40' step='2' value='42' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(42)'>-</button></div>
 			<input type='number' id='quantity42' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(42)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter44' class='form-control' min='14' max='40' step='2' value='44' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(44)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter44' class='form-control' min='14' max='40' step='2' value='44' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(44)'>-</button></div>
 			<input type='number' id='quantity44' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(44)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter46' class='form-control' min='14' max='40' step='2' value='46' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(46)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter46' class='form-control' min='14' max='40' step='2' value='46' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(46)'>-</button></div>
 			<input type='number' id='quantity46' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(46)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter48' class='form-control' min='14' max='40' step='2' value='48' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(48)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter48' class='form-control' min='14' max='40' step='2' value='48' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(48)'>-</button></div>
 			<input type='number' id='quantity48' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(48)'>+</button> </div>
 			</div></div>
-			<div class='form-group col-4'><input type='number' id='diameter50' class='form-control' min='14' max='40' step='2' value='50' required></div>
-			<div class='form-group col-8'><div class='input-group'>
-			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(50)'>-</button></div>
+			<div class='form-group col-6'><div class='input-group'><span class='input-group-text' id='basic-addon1'>経口(cm)</span><input type='number' id='diameter50' class='form-control' min='14' max='40' step='2' value='50' required></div></div>
+			<div class='form-group col-6'><div class='input-group'>
+			<span class='input-group-text' id='basic-addon1'>本数</span><div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(50)'>-</button></div>
 			<input type='number' id='quantity50' class='form-control' min='0' value='0' required>
 			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(50)'>+</button> </div>
 			</div></div>
+
 
             <!-- ここまで繰り返し -->
 	    </div>
@@ -195,7 +198,7 @@
         });
 
         var beforeNum=0;
-        var recFlg = 30;
+        var recFlg = 20;
         var recrcvflg = 0;
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -214,11 +217,9 @@
                     const uttr = new SpeechSynthesisUtterance(speechText);
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
-                    if(recFlg==30){
-                       alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
-                    }
                     recFlg=20;
                     recrcvflg=1;
+                    alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
                     recognition.start();
                 }else{
                     recrcvflg=0;
