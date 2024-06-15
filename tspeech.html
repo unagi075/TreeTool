@@ -9,17 +9,25 @@
 </head>
 <body style="background-color: #ffddff;">
     <div class="container mt-5">
-    	<font color='red'><p id="error-message"></p></font>
+        <table class="table-dark fixed-top col-sm">
+	        <tbody>
+	        	<tr>
+        	    	<td><h5 id="version">材積 ver3.0a</h5></td>
+	    			<td><div class="input-group d-flex justify-content-center">
+			    		<span class="input-group-text" id="basic-addon1">長さ(m)</span>
+						<input type="number" id="length" min="1" max="5" step="0.5" value="4" required>
+					</div></td>
+        			<td class="d-flex justify-content-end"><h4 id="total_quantity" >合計 0本</h4></td>
+        		</tr>
+			</tbody>
+		</table>
         <div class="form-row">
-            <div class="form-group col-3">
+    		<font color='red'><p id="error-message"></p></font>
+            <div class="form-group col-4">
                 <label for="diameter">直径(cm)</label>
                 <input type="number" id="diameter14" class="form-control" min="14" max="40" step="2" value="14" required>
             </div>
-            <div class="form-group col-3">
-                <label for="length">長さ(m)</label>
-                <input type="number" id="length14" class="form-control" min="3" max="4" step="0.5" value="4" required>
-            </div>
-            <div class="form-group col-4">
+            <div class="form-group col-8">
                 <label for="quantity">本数</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -33,132 +41,114 @@
             </div>
 
             <!-- ここから繰り返し -->
-            <div class='form-group col-3'><input type='number' id='diameter16' class='form-control' min='14' max='40' step='2' value='16' required></div>
-            <div class='form-group col-3'><input type='number' id='length16' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(16)'>-</button></div>
-            <input type='number' id='quantity16' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(16)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter18' class='form-control' min='14' max='40' step='2' value='18' required></div>
-            <div class='form-group col-3'><input type='number' id='length18' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(18)'>-</button></div>
-            <input type='number' id='quantity18' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(18)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter20' class='form-control' min='14' max='40' step='2' value='20' required></div>
-            <div class='form-group col-3'><input type='number' id='length20' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(20)'>-</button></div>
-            <input type='number' id='quantity20' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(20)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter22' class='form-control' min='14' max='40' step='2' value='22' required></div>
-            <div class='form-group col-3'><input type='number' id='length22' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(22)'>-</button></div>
-            <input type='number' id='quantity22' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(22)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter24' class='form-control' min='14' max='40' step='2' value='24' required></div>
-            <div class='form-group col-3'><input type='number' id='length24' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(24)'>-</button></div>
-            <input type='number' id='quantity24' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(24)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter26' class='form-control' min='14' max='40' step='2' value='26' required></div>
-            <div class='form-group col-3'><input type='number' id='length26' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(26)'>-</button></div>
-            <input type='number' id='quantity26' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(26)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter28' class='form-control' min='14' max='40' step='2' value='28' required></div>
-            <div class='form-group col-3'><input type='number' id='length28' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(28)'>-</button></div>
-            <input type='number' id='quantity28' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(28)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter30' class='form-control' min='14' max='40' step='2' value='30' required></div>
-            <div class='form-group col-3'><input type='number' id='length30' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(30)'>-</button></div>
-            <input type='number' id='quantity30' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(30)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter32' class='form-control' min='14' max='40' step='2' value='32' required></div>
-            <div class='form-group col-3'><input type='number' id='length32' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(32)'>-</button></div>
-            <input type='number' id='quantity32' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(32)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter34' class='form-control' min='14' max='40' step='2' value='34' required></div>
-            <div class='form-group col-3'><input type='number' id='length34' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(34)'>-</button></div>
-            <input type='number' id='quantity34' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(34)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter36' class='form-control' min='14' max='40' step='2' value='36' required></div>
-            <div class='form-group col-3'><input type='number' id='length36' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(36)'>-</button></div>
-            <input type='number' id='quantity36' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(36)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter38' class='form-control' min='14' max='40' step='2' value='38' required></div>
-            <div class='form-group col-3'><input type='number' id='length38' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(38)'>-</button></div>
-            <input type='number' id='quantity38' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(38)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter40' class='form-control' min='14' max='40' step='2' value='40' required></div>
-            <div class='form-group col-3'><input type='number' id='length40' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(40)'>-</button></div>
-            <input type='number' id='quantity40' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(40)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter42' class='form-control' min='14' max='40' step='2' value='42' required></div>
-            <div class='form-group col-3'><input type='number' id='length42' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(42)'>-</button></div>
-            <input type='number' id='quantity42' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(42)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter44' class='form-control' min='14' max='40' step='2' value='44' required></div>
-            <div class='form-group col-3'><input type='number' id='length44' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(44)'>-</button></div>
-            <input type='number' id='quantity44' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(44)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter46' class='form-control' min='14' max='40' step='2' value='46' required></div>
-            <div class='form-group col-3'><input type='number' id='length46' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(46)'>-</button></div>
-            <input type='number' id='quantity46' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(46)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter48' class='form-control' min='14' max='40' step='2' value='48' required></div>
-            <div class='form-group col-3'><input type='number' id='length48' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(48)'>-</button></div>
-            <input type='number' id='quantity48' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(48)'>+</button> </div>
-            </div></div>
-            <div class='form-group col-3'><input type='number' id='diameter50' class='form-control' min='14' max='40' step='2' value='50' required></div>
-            <div class='form-group col-3'><input type='number' id='length50' class='form-control' min='3' max='4' step='0.5' value='4' required></div>
-            <div class='form-group col-4'><div class='input-group'>
-            <div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(50)'>-</button></div>
-            <input type='number' id='quantity50' class='form-control' min='0' value='0' required>
-            <div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(50)'>+</button> </div>
-            </div></div>
+			<div class='form-group col-4'><input type='number' id='diameter16' class='form-control' min='14' max='40' step='2' value='16' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(16)'>-</button></div>
+			<input type='number' id='quantity16' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(16)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter18' class='form-control' min='14' max='40' step='2' value='18' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(18)'>-</button></div>
+			<input type='number' id='quantity18' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(18)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter20' class='form-control' min='14' max='40' step='2' value='20' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(20)'>-</button></div>
+			<input type='number' id='quantity20' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(20)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter22' class='form-control' min='14' max='40' step='2' value='22' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(22)'>-</button></div>
+			<input type='number' id='quantity22' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(22)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter24' class='form-control' min='14' max='40' step='2' value='24' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(24)'>-</button></div>
+			<input type='number' id='quantity24' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(24)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter26' class='form-control' min='14' max='40' step='2' value='26' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(26)'>-</button></div>
+			<input type='number' id='quantity26' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(26)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter28' class='form-control' min='14' max='40' step='2' value='28' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(28)'>-</button></div>
+			<input type='number' id='quantity28' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(28)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter30' class='form-control' min='14' max='40' step='2' value='30' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(30)'>-</button></div>
+			<input type='number' id='quantity30' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(30)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter32' class='form-control' min='14' max='40' step='2' value='32' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(32)'>-</button></div>
+			<input type='number' id='quantity32' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(32)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter34' class='form-control' min='14' max='40' step='2' value='34' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(34)'>-</button></div>
+			<input type='number' id='quantity34' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(34)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter36' class='form-control' min='14' max='40' step='2' value='36' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(36)'>-</button></div>
+			<input type='number' id='quantity36' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(36)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter38' class='form-control' min='14' max='40' step='2' value='38' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(38)'>-</button></div>
+			<input type='number' id='quantity38' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(38)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter40' class='form-control' min='14' max='40' step='2' value='40' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(40)'>-</button></div>
+			<input type='number' id='quantity40' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(40)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter42' class='form-control' min='14' max='40' step='2' value='42' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(42)'>-</button></div>
+			<input type='number' id='quantity42' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(42)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter44' class='form-control' min='14' max='40' step='2' value='44' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(44)'>-</button></div>
+			<input type='number' id='quantity44' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(44)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter46' class='form-control' min='14' max='40' step='2' value='46' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(46)'>-</button></div>
+			<input type='number' id='quantity46' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(46)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter48' class='form-control' min='14' max='40' step='2' value='48' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(48)'>-</button></div>
+			<input type='number' id='quantity48' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(48)'>+</button> </div>
+			</div></div>
+			<div class='form-group col-4'><input type='number' id='diameter50' class='form-control' min='14' max='40' step='2' value='50' required></div>
+			<div class='form-group col-8'><div class='input-group'>
+			<div class='input-group-prepend'><button type='button' class='btn btn-dark' onclick='decrementQuantity(50)'>-</button></div>
+			<input type='number' id='quantity50' class='form-control' min='0' value='0' required>
+			<div class='input-group-append'><button type='button' class='btn btn-dark' onclick='incrementQuantity(50)'>+</button> </div>
+			</div></div>
 
             <!-- ここまで繰り返し -->
 	    </div>
@@ -170,8 +160,8 @@
 	<div class="fixed-bottom">
         <div class="card text-bg-dark">
             <div class="card-head">
-                <h4 class="mb-2" id="version" >材積</h4>
-                ver2.5e
+	            <h6 id="debug-msg1">　</h6>
+	            <h6 id="debug-msg2">　</h6>
             </div>
         </div>
 		    <div class="fixed-bottom d-flex justify-content-center">
@@ -186,12 +176,11 @@
     <script>
         const endButton = document.getElementById('end-button');
 	    endButton.addEventListener('click', () => {
-            
             document.getElementById('result').innerText = '';
             var total = 0;
             for(var num=14; num<=50; num = num + 2){
                 var diameter = document.getElementById('diameter'+num).value;
-                var length   = document.getElementById('length'+num).value;
+                var length   = document.getElementById('length').value;
                 var quantity = document.getElementById('quantity'+num).value;
                 var zaitanka = Math.round(diameter*diameter*length/10)/1000;
                 if(quantity > 0){
@@ -206,7 +195,7 @@
         });
 
         var beforeNum=0;
-        var recFlg = 1;
+        var recFlg = 20;
         var recrcvflg = 0;
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -225,7 +214,7 @@
                     const uttr = new SpeechSynthesisUtterance(speechText);
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
-                    recFlg=7;
+                    recFlg=20;
                     recrcvflg=1;
                     alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
                     recognition.start();
@@ -237,15 +226,15 @@
 
             function recStart(){
                 if(recrcvflg==1){
-                    if(recFlg == 5 ){
+                    if(recFlg == 10 ){
                         try{
                             recognition.start();
                         } catch(e) {
-                            recFlg=5;
+                            recFlg=9;
                         }
 
                     }
-                    if(recFlg <= 6){
+                    if(recFlg <= 20){
                         recFlg = recFlg + 1;
                     }
                 }
@@ -268,8 +257,10 @@
                 }
                 //キーワード：数字＋キャンセルがあれば本数を下げる
                 tmpInt = transcript.indexOf("キャンセル")-2
+                outDegugMsg(transcript,tmpInt);
                 if(tmpInt>=0){
                     tmpStr = transcript.substr(tmpInt,2);
+                	outDegugMsg("キャンセルサイズ",tmpStr);
                     if(tmpStr!="" && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
                         decrementQuantity(Number(tmpStr));
                         scrollTo(0, Number(tmpStr)*18-200);
@@ -294,7 +285,7 @@
                     speechSynthesis.speak(uttr);
             	    document.getElementById('error-message').innerText = "※数値を認識できません。認識ワード="+transcript;
                 }
-                recFlg=0;
+                recFlg=8;
             });
 
             recognition.addEventListener('error', (event) => {
@@ -331,7 +322,7 @@
                 document.getElementById('diameter'+beforeNum).style.backgroundColor = '';
 	        }
 	        beforeNum = num;
-            //await sleep(2000);
+	        totalQuantity();
         }
 
         function decrementQuantity(num) {
@@ -342,9 +333,21 @@
             const quantityInput = document.getElementById('quantity'+num);
             const newValue = parseInt(quantityInput.value) - 1;
             quantityInput.value = Math.max(newValue, 0);
+            totalQuantity();
         }
 
-        const sleep = (time) => new Promise((r) => setTimeout(r, time));//timeはミリ
+		function totalQuantity() {
+			var total_quantity = 0;
+            for(var num=14; num<=50; num = num + 2){
+                total_quantity = total_quantity + Number(document.getElementById('quantity'+num).value);
+            }
+            document.getElementById('total_quantity').innerText = "合計 " + total_quantity + "本";
+		}
+		
+		function outDegugMsg(strTitle,strMsg){
+			document.getElementById('debug-msg1').innerText = strTitle;
+			document.getElementById('debug-msg2').innerText = strMsg;
+		}
     </script>
 </body>
 </html>
