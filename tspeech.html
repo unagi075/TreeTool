@@ -195,7 +195,7 @@
         });
 
         var beforeNum=0;
-        var recFlg = 20;
+        var recFlg = 30;
         var recrcvflg = 0;
         //音声認識
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -214,9 +214,11 @@
                     const uttr = new SpeechSynthesisUtterance(speechText);
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
+                    if(recFlg==30){
+                       alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
+                    }
                     recFlg=20;
                     recrcvflg=1;
-                    alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
                     recognition.start();
                 }else{
                     recrcvflg=0;
