@@ -338,7 +338,7 @@
         function decrementQuantity(num) {
             var speechText = num + "センチを削減";
             const uttr = new SpeechSynthesisUtterance(speechText);
-            uttr.voices = getVoices()[1];
+            //uttr.voices = getVoices()[1];
             uttr.lang = 'ja-JP';
             speechSynthesis.speak(uttr);
             const quantityInput = document.getElementById('quantity'+num);
