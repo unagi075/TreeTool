@@ -7,12 +7,12 @@
     <!-- BootstrapのCSSを読み込む -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body style="background-color: #ffddff;">
+<body style="background-color: #ffffff;">
     <div class="container mt-5">
         <table class="table-dark fixed-top col-sm">
 	        <tbody>
 	        	<tr>
-        	    	<td><h5 id="version">材積算 ver3.0c</h5></td>
+        	    	<td><h5 id="version">材積算 ver3.0g</h5></td>
 	    			<td><div class="input-group d-flex justify-content-center">
 			    		<span class="input-group-text" id="basic-addon1">長さ(m)</span>
 						<input type="number" id="length" min="1" max="5" step="0.5" value="4" required>
@@ -21,8 +21,8 @@
         		</tr>
 			</tbody>
 		</table>
+    	<font color='red'><p class="form-group col-12" id="error-message"></p></font>
         <div class="form-row">
-    		<font color='red'><p id="error-message"></p></font>
             <div class="form-group col-6">
             	<div class="input-group">
         	        <span class="input-group-text" id="basic-addon1">経口(cm)</span>
@@ -248,7 +248,7 @@
 
             recognition.addEventListener('result', (event) => {
             	document.getElementById('error-message').innerText = "";
-                const transcript = event.results[0][0].transcript;
+                const transcript = event.results[0][0].transcript.replace(" ", "");
 	        	document.getElementById('start-button').src="png/mic_black.png"
                 var keywordErrorFlg = true;
                 //キーワード：「終わり」があれば音声入力終了
@@ -265,7 +265,8 @@
                 outDegugMsg(transcript,tmpInt);
                 if(tmpInt>=0){
                     tmpStr = transcript.substr(tmpInt,2);
-                	outDegugMsg("キャンセルサイズ",tmpStr);
+                    tmpStr = tmpStr.replace(/[^0-9]/g, "")
+                	//outDegugMsg("キャンセルサイズ",tmpStr);
                     if(tmpStr!="" && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
                         decrementQuantity(Number(tmpStr));
                         scrollTo(0, Number(tmpStr)*18-200);
@@ -308,6 +309,7 @@
                 startButton.textContent = '認識中...';
         		document.getElementById('start-button').src="png/mic_red.png"
             });
+            
         } else {
             alert('このブラウザは音声認識をサポートしていません。');
         }
@@ -317,6 +319,7 @@
             var speechText = num + "センチに追加";
             const uttr = new SpeechSynthesisUtterance(speechText);
             uttr.lang = 'ja-JP';
+            uttr.voices = getVoices[1];
             speechSynthesis.speak(uttr);
             const quantityInput = document.getElementById('quantity'+num);
             quantityInput.value = parseInt(quantityInput.value) + 1;
@@ -353,6 +356,11 @@
 			document.getElementById('debug-msg1').innerText = strTitle;
 			document.getElementById('debug-msg2').innerText = strMsg;
 		}
+		
+		const getVoices = () => {
+			return  speechSynthesis.getVoices().filter((v) => v.lang === 'ja-JP')
+		}
+
     </script>
 </body>
 </html>
