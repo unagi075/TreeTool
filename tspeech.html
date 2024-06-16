@@ -275,14 +275,12 @@
                 }
                 //キーワード：数字があれば最後の２桁を抽出して、１４～５０までの数字であれば本数を上げる
                 tmpStrGenpon = transcript.replace(/[^0-9]/g, "").slice(-2);
-                for(i = tmpStrGenpon.length; i > 0; i = i - 2){
-                    if(i - 2 >= 0){
-                        tmpStr = tmpStrGenpon.substr(i - 2, 2);
-                        if(keywordErrorFlg==true && tmpStr!="" && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
+                for(i = 0; i < tmpStrGenpon.length; i = i + 2){
+                    tmpStr = tmpStrGenpon.substr(i, 2);
+                    if(keywordErrorFlg==true && tmpStr.length==2 && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
                             incrementQuantity(Number(tmpStr));
                             scrollTo(0, Number(tmpStr)*18-200);
                             keywordErrorFlg = false;
-                        }
                     }
                 }
 
