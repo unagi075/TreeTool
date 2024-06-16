@@ -12,7 +12,7 @@
         <table class="table-dark fixed-top col-sm">
 	        <tbody>
 	        	<tr>
-        	    	<td><h5 id="version">材積算 ver3.0n</h5></td>
+        	    	<td><h5 id="version">材積算 ver3.1a</h5></td>
 	    			<td><div class="input-group d-flex justify-content-center">
 			    		<span class="input-group-text" id="basic-addon1">長さ(m)</span>
 						<input type="number" id="length" min="1" max="5" step="0.5" value="4" required>
@@ -218,7 +218,7 @@
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
                     if(recFlg==30){
-                        alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
+                        alert("「14」など2桁の数字を言うと１本追加されます\n「14と18と23」のように数字＋「と」＋数字でまとめて追加することできます。\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
                     }
                     recFlg=20;
                     recrcvflg=1;
