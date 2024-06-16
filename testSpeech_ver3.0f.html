@@ -12,7 +12,7 @@
         <table class="table-dark fixed-top col-sm">
 	        <tbody>
 	        	<tr>
-        	    	<td><h5 id="version">材積算 ver3.1a</h5></td>
+        	    	<td><h5 id="version">材積算 ver3.0f</h5></td>
 	    			<td><div class="input-group d-flex justify-content-center">
 			    		<span class="input-group-text" id="basic-addon1">長さ(m)</span>
 						<input type="number" id="length" min="1" max="5" step="0.5" value="4" required>
@@ -21,8 +21,8 @@
         		</tr>
 			</tbody>
 		</table>
-    	<font color='red'><p class="form-group col-12" id="error-message"></p></font>
         <div class="form-row">
+    		<font color='red'><p id="error-message"></p></font>
             <div class="form-group col-6">
             	<div class="input-group">
         	        <span class="input-group-text" id="basic-addon1">経口(cm)</span>
@@ -218,7 +218,7 @@
                     uttr.lang = 'ja-JP';
                     speechSynthesis.speak(uttr);
                     if(recFlg==30){
-                        alert("「14」など2桁の数字を言うと１本追加されます\n「14と18と23」のように数字＋「と」＋数字でまとめて追加することできます。\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
+                        alert("「14」など2桁の数字を言うと１本追加されます\n「14キャンセル」など数値＋キャンセルで1本削減されます\n「終わり」で音声入力終了します")
                     }
                     recFlg=20;
                     recrcvflg=1;
@@ -248,7 +248,7 @@
 
             recognition.addEventListener('result', (event) => {
             	document.getElementById('error-message').innerText = "";
-                const transcript = event.results[0][0].transcript.replace(" ", "");
+                const transcript = event.results[0][0].transcript;
 	        	document.getElementById('start-button').src="png/mic_black.png"
                 var keywordErrorFlg = true;
                 //キーワード：「終わり」があれば音声入力終了
@@ -261,9 +261,10 @@
                     speechSynthesis.speak(uttr);
                 }
                 //キーワード：数字＋キャンセルがあれば本数を下げる
-                tmpInt = transcript.indexOf("キャンセル")-2
+                tmpInt = transcript.indexOf("キャンセル")-3
+                outDegugMsg(transcript,tmpInt);
                 if(tmpInt>=0){
-                    tmpStr = transcript.substr(tmpInt,2);
+                    tmpStr = transcript.substr(tmpInt,3);
                     tmpStr = tmpStr.replace(/[^0-9]/g, "")
                 	//outDegugMsg("キャンセルサイズ",tmpStr);
                     if(tmpStr!="" && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
@@ -273,18 +274,11 @@
                     }
                 }
                 //キーワード：数字があれば最後の２桁を抽出して、１４～５０までの数字であれば本数を上げる
-                tmpStrGenpon = transcript.replace(/[^0-9]/g, "");
-                if(keywordErrorFlg==true){
-                    for(i = 0; i < tmpStrGenpon.length; i = i + 2){
-                        tmpStr = tmpStrGenpon.substr(i, 2);
-                        outDegugMsg(transcript,tmpStrGenpon + " " + tmpStr);
-                        if(tmpStr.length==2 && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
-                            
-                            incrementQuantity(Number(tmpStr));
-                            scrollTo(0, Number(tmpStr)*18-200);
-                            keywordErrorFlg = false;
-                        }
-                    }
+                tmpStr = transcript.replace(/[^0-9]/g, "").slice(-2);
+                if(keywordErrorFlg==true && tmpStr!="" && "14 15 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50".indexOf(tmpStr)>=0){
+                    incrementQuantity(Number(tmpStr));
+                    scrollTo(0, Number(tmpStr)*18-200);
+                    keywordErrorFlg = false;
                 }
 
                 //キーワードが認識できない場合
@@ -315,7 +309,6 @@
                 startButton.textContent = '認識中...';
         		document.getElementById('start-button').src="png/mic_red.png"
             });
-            
         } else {
             alert('このブラウザは音声認識をサポートしていません。');
         }
@@ -341,7 +334,6 @@
         function decrementQuantity(num) {
             var speechText = num + "センチを削減";
             const uttr = new SpeechSynthesisUtterance(speechText);
-            //uttr.voices = getVoices()[1];
             uttr.lang = 'ja-JP';
             speechSynthesis.speak(uttr);
             const quantityInput = document.getElementById('quantity'+num);
@@ -362,11 +354,6 @@
 			document.getElementById('debug-msg1').innerText = strTitle;
 			document.getElementById('debug-msg2').innerText = strMsg;
 		}
-		
-		const getVoices = () => {
-			return  speechSynthesis.getVoices().filter((v) => v.lang === 'ja-JP')
-		}
-
     </script>
 </body>
 </html>
