@@ -325,7 +325,7 @@
             var speechText = num + "センチに追加";
             const uttr = new SpeechSynthesisUtterance(speechText);
             uttr.lang = 'ja-JP';
-            uttr.pitch = 1.8;// 高さ 0-2
+            uttr.pitch = 0.2;// 高さ 0-2
             //uttr.rate = 2.0;// 速度 0.1-10
             speechSynthesis.speak(uttr);
             const quantityInput = document.getElementById('quantity'+num);
@@ -344,7 +344,7 @@
             var speechText = num + "センチを削減";
             const uttr = new SpeechSynthesisUtterance(speechText);
             uttr.lang = 'ja-JP';
-            uttr.pitch = 0.1;// 高さ 0-2
+            uttr.pitch = 1.6;// 高さ 0-2
             //uttr.rate = 1.0;// 速度 0.1-10
             speechSynthesis.speak(uttr);
             const quantityInput = document.getElementById('quantity'+num);
