@@ -12,7 +12,7 @@
         <table class="table-dark fixed-top col-sm">
 	        <tbody>
 	        	<tr>
-        	    	<td><h5 id="version">材積算 ver3.1e</h5></td>
+        	    	<td><h5 id="version">材積算 ver3.2a</h5></td>
 	    			<td><div class="input-group d-flex justify-content-center">
 			    		<span class="input-group-text" id="basic-addon1">長さ(m)</span>
 						<input type="number" id="length" min="1" max="5" step="0.5" value="4" required>
@@ -325,7 +325,7 @@
             var speechText = num + "センチに追加";
             const uttr = new SpeechSynthesisUtterance(speechText);
             uttr.lang = 'ja-JP';
-            uttr.pitch = 0.2;// 高さ 0-2
+            uttr.pitch = 1.6;// 高さ 0-2
             //uttr.rate = 2.0;// 速度 0.1-10
             speechSynthesis.speak(uttr);
             const quantityInput = document.getElementById('quantity'+num);
@@ -344,7 +344,7 @@
             var speechText = num + "センチを削減";
             const uttr = new SpeechSynthesisUtterance(speechText);
             uttr.lang = 'ja-JP';
-            uttr.pitch = 1.6;// 高さ 0-2
+            uttr.pitch = 0.2;// 高さ 0-2
             //uttr.rate = 1.0;// 速度 0.1-10
             speechSynthesis.speak(uttr);
             const quantityInput = document.getElementById('quantity'+num);
